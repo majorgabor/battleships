@@ -1,0 +1,31 @@
+div#first_row {
+    padding-top: 20px;
+    
+}
+
+div.row {
+    margin: 0px;
+}
+
+form div.form-group {
+    margin-bottom: 16px;
+}
+
+div#first_row div.offset-lg-1,
+div#first_row div.col-lg-4,
+div#first_row div.col-lg-3 {
+    padding: 20px;
+    text-align: center;
+}
+
+div#first_row {
+    background-color: #f2f2f2;
+}
+
+div#first_row p {
+    text-align: justify;
+}
+
+div#myCarousel img {
+    width: 100%;
+}

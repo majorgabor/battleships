@@ -1,0 +1,17 @@
+div#first_row {
+    padding-top: 20px;
+    
+}
+
+div.row {
+    margin: 0px;
+}
+
+form div.form-group {
+    margin-bottom: 16px;
+}
+
+div#first_row div.jumbotron {
+    text-align: center;
+    padding: 32px;
+}
