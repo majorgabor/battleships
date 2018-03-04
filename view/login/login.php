@@ -2,16 +2,12 @@
 <?php
 
 require_once "../../services/methods.php";
-
-/*if(isset($_COOKIE["remember"]) && isset($_SESSION[$_COOKIE["remember"]])){
-    redirect("game.php");
-} else if(isset($_COOKIE["remember"])){
-    $_SESSION[$_COOKIE["remember"]] = "logged_in";
-    redirect("game.php");
-}*/
 if(isset($_SESSION["logged_in"])){
-    redirect("./account/index.php");
+    redirect("./account/account.php");
 }
+
+$flashData = load_from_flash();
+$message = $flashData["message"] ? : [];
 
 ?>
 
@@ -45,6 +41,7 @@ if(isset($_SESSION["logged_in"])){
                 </ul>
             </div>
         </nav>
+        
 <!-- The First Row -->
         <div id="first_row" class="row">
             <div id="grid_style" class="offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 offset-md-1 col-md-10 col-sm-12 col-12" >
@@ -58,6 +55,12 @@ if(isset($_SESSION["logged_in"])){
         <div class="row">
             <div id="grid_style" class="offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 offset-md-1 col-md-10 col-sm-12 col-12">
                 <div class="jumbotron">
+                    <?php if($message) : ?>
+                    <div class="alert alert-primary alert-dismissible fade show">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <?php echo $message; ?>
+                    </div>
+                    <?php endif; ?>
                     <h3>Login</h3>
                     <br>
 <!-- The Form -->
@@ -67,14 +70,21 @@ if(isset($_SESSION["logged_in"])){
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" ng-model="user.username" id="username" placeholder="Enter username" name="username">
                             </div>
-                            <label  class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="username">{{errors.username}}</label>                            
+                            <label id="error" class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="username">{{errors.username}}</label>                            
                         </div>
                         <div class="form-group row">
                             <label class="control-label col-sm-3" for="password">Password:</label>
                             <div class="col-sm-9">          
                                 <input type="password" class="form-control" ng-model="user.password" id="password" placeholder="Enter password" name="password">
                             </div>
-                            <label class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="password">{{errors.password}}</label>
+                            <label id="error" class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="password">{{errors.password}}</label>
+                        </div>
+                        <div class="form-group row">
+                            <div class="offset-sm-3 col-sm-9">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" ng-model="user.remember" id="remember" name="remember" value="true"> Remember ME</label>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group row">        
                             <div class="offset-sm-3 col-sm-9">

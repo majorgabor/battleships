@@ -44,9 +44,9 @@
 <!-- End Menu -->
 <!-- Firs Row -->
         <div id="first_row" class="row">
-            <div id="grid_style" class="offset-xl-2 col-xl-5 offset-lg-1 col-lg-6 col-md-7 col-sm-12 col-xs-12">
+            <div class="offset-xl-2 col-xl-5 offset-lg-1 col-lg-6 col-md-7 col-sm-12 col-xs-12">
                 <div class="jumbotron">
-                    <table style="width: 100%; text-align: center;">
+                    <table>
                         <tr>
                             <td><h3>Name</h3></td>
                             <td>{{user.firstname}} {{user.lastname}}</td>
@@ -61,7 +61,7 @@
                         </tr>
                     </table>
                     <br>
-                    <div class="container" style="text-align: center;">
+                    <div id="buttons" class="container">
                         <div class="btn-group">
                             <button type="button" data-toggle="modal" data-target="#modifyProfileModel" class="btn btn-primary">Modify Profile</button>
                             <button type="button" data-toggle="modal" data-target="#passwordChangeModal" class="btn btn-primary">Change Password</button>
@@ -69,9 +69,9 @@
                     </div>
                 </div>
             </div>
-            <div id="grid_style" class="col-xl-3 col-lg-4 col-md-5 col-sm-12 col-xs-12">
-                <div class="jumbotron" style="height: 90.93%">
-                    <table style="width: 100%; text-align: center;">
+            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12 col-xs-12">
+                <div id="second_grid" class="jumbotron">
+                    <table>
                         <tr>
                             <td><h3>Battles</h3></td>
                             <td>{{user.battles}}</td>

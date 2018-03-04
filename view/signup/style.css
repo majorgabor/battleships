@@ -7,6 +7,10 @@ div.row {
     margin: 0px;
 }
 
+label#error {
+    color: red;
+}
+
 form div.form-group {
     margin-bottom: 16px;
 }

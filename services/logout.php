@@ -4,11 +4,11 @@ require_once "methods.php";
 
 unset($_SESSION["logged_in"]);
 
-//setcookie("code", "", time() - 3600);
+setcookie("remember", "", time() - 3600, "/");
 
-$response["messages"] = "Sucsesfully logged out.";
-
-echo json_encode($response);
+save_to_flash([
+    "message" => "Sucsesfully logged out."
+]);
 
 redirect("../view/login/login.php");
 

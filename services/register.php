@@ -10,8 +10,6 @@ $messages = [];
 $json = file_get_contents("php://input");
 $post_data = json_decode($json);
 
-// $users = get_usernames();
-
 if(isset($post_data->firstname) && !empty($post_data->firstname)){
     $inputs["firstname"] = defence($post_data->firstname);
 } else {
@@ -66,12 +64,15 @@ if(!$errors){
         "username" => $inputs["username"],
         "email" => $inputs["email"],
         "password" => password_hash($inputs['password'], PASSWORD_DEFAULT),
-        "code" => password_hash(generate_code(8), PASSWORD_DEFAULT)
+        "code" => generate_code(8)
     );
     
     if(insert_new_user($newUser)){
         $respond["success"] = true;
         $respond["message"] = "Sucsessfuly Signed Up.";
+        save_to_flash([
+            "message" => "LogIn into your new account.",
+        ]);
     } else {
         $respond["success"] = false;
         $respond["message"] = "Faild to Sign Up!.";

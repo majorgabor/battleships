@@ -2,6 +2,8 @@
 
 session_start();
 
+require_once "connect.php";
+
 function save_to_file($file, $data) {
     file_put_contents($file, json_encode($data));
 }
@@ -42,11 +44,27 @@ function defence($str){
 }
 
 function auth() {
-    if (!isset($_SESSION["logged_in"/*$_COOKIE["remember"]*/])) {
-        $errors["result"] = "You must LogIn first.";
-        redirect('../login/login.php');
+    if (!isset($_SESSION["logged_in"])) {
+        remember();
     }
 }
+
+function remember(){
+    if(!isset($_SESSION["logged_in"]) && isset($_COOKIE["remember"])){
+        $cookie = unserialize($_COOKIE["remember"]);
+        if(password_verify(get_code_for_remember($cookie["username"]), $cookie["code"])){
+            $_SESSION["logged_in"] = $cookie["username"];
+        } else {
+            print_r($cookie);
+            echo get_code_for_remember($cookie["username"]);
+            save_to_flash([
+                "message" => "You must LogIn first."
+            ]);
+            redirect('../login/login.php');
+        }
+    }
+}
+
 
 function generate_code($length){
     $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:,.?";

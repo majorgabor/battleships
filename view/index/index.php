@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php
 require_once "../../services/methods.php";
+remember();
+
 ?>
 <html lang="en">
 <head>
@@ -24,9 +26,10 @@ require_once "../../services/methods.php";
             <?php if(isset($_SESSION["logged_in"])) :?>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <span class="navbar-text">
-                    Logged in as <b><?php echo $_SESSION["logged_in"]; ?></b>
-                    </span>
+                    <span class="navbar-text">Logged in as</span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../account/account.php" ><b><?php echo $_SESSION["logged_in"]; ?></b></a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -54,19 +57,19 @@ require_once "../../services/methods.php";
     </nav>
 <!-- The First Row -->
     <div id="first_row" class="row">
-        <div class="offset-lg-1 col-lg-3">
+        <div class="offset-lg-1 col-lg-3 col-md-4">
             <img class="rounded-circle" src="http://pipsum.com/140x140.jpg" alt="Generic placeholder image" width="140" height="140">
             <h2>Heading</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, totam blanditiis dolores placeat pariatur asperiores quos vero. Consequatur nostrum inventore perspiciatis hic sequi, fugit adipisci dolor vero, nisi eum illum?</p>
             <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-md-4">
             <img class="rounded-circle" src="http://pipsum.com/140x140.jpg" alt="Generic placeholder image" width="140" height="140">
             <h2>Heading</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque eveniet modi, asperiores dignissimos ratione et repudiandae rerum, sit cum cumque sapiente? Corporis assumenda modi ducimus! Provident, quia. Asperiores, eligendi sed?</p>
             <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-md-4">
             <img class="rounded-circle" src="http://pipsum.com/140x140.jpg" alt="Generic placeholder image" width="140" height="140">
             <h2>Heading</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam quod sequi veniam quia repellendus provident aliquid harum quas minus esse? Consequatur vero esse ad. Dolorem esse eum qui ratione aliquid!</p>

@@ -3,6 +3,19 @@ div#first_row {
     
 }
 
+div#first_row table {
+    width: 100%;
+    text-align: center;
+}
+
+div#first_row div#buttons {
+    text-align: center;
+}
+
+div#first_row div#second_grid {
+    height: 90.93%;
+}
+
 div.row {
     margin: 0px;
 }

@@ -3,6 +3,10 @@ div#first_row {
     
 }
 
+label#error {
+    color: red;
+}
+
 div.row {
     margin: 0px;
 }

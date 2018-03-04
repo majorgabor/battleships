@@ -22,7 +22,7 @@ app.controller("signupCtrl", function($scope, $http){
                     type : "success",
                     text : response.data.message
                 };
-                window.location="../account/account.php";
+                window.location="../login/login.php";
             } else {
                 if(response.data.errors != undefined){
                     $scope.errors = response.data.errors;

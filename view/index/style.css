@@ -3,6 +3,10 @@ div#first_row {
     
 }
 
+div#first_row img {
+    margin-bottom: 20px;
+}
+
 div.row {
     margin: 0px;
 }

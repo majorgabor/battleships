@@ -26,8 +26,14 @@ if(isset($post_data->password) && !empty($post_data->password)){
 
 if(!$errors){
     if(is_existing_username($inputs["username"]) && password_verify($inputs["password"], get_password_for_verify($inputs["username"]))){
-        unset($inputs["password"]);        
-        //setcookie("code", get_username_by_code($inputs["username"]), time() + 86400, "/");
+        unset($inputs["password"]);
+        if(isset($post_data->remember) || !empty($post_data->remember)){
+            $cookie = [
+                "username" => $inputs["username"],
+                "code" => password_hash(get_code_for_remember($inputs["username"]), PASSWORD_DEFAULT)
+            ];
+            setcookie("remember", serialize($cookie), time() + 86400, "/");
+        }        
         $_SESSION["logged_in"] = $inputs["username"];
         $response["success"] = true;
         $response["message"] = "Sucsessfully LoggedIn.";

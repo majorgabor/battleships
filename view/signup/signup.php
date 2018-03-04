@@ -2,10 +2,11 @@
 <?php
 
 require_once '../../services/methods.php';
+remember();
+if(isset($_SESSION["logged_in"])){
+    redirect("./account/account.php");
+}
 
-$flashData = load_from_flash();
-$errors = $flashData["errors"] ? : [];
-$messages = $flashData["messages"] ? : [];
 ?>
 <html lang="en">
 <head>
@@ -48,42 +49,42 @@ $messages = $flashData["messages"] ? : [];
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" ng-model="user.firstname" id="firstname" placeholder="Enter firstname" name="firstname">
                             </div>
-                            <label  class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="firstname">{{errors.firstname}}</label>
+                            <label id="error" class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="firstname">{{errors.firstname}}</label>
                         </div>
                         <div class="form-group row">
                             <label class="control-label col-sm-3" for="lastname">Lastname:</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" ng-model="user.lastname" id="lastname" placeholder="Enter lastname" name="lastname">
                             </div>
-                            <label  class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="lastname">{{errors.lastname}}</label>
+                            <label id="error" class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="lastname">{{errors.lastname}}</label>
                         </div>
                         <div class="form-group row">
                             <label class="control-label col-sm-3" for="username">Username:</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" ng-model="user.username" id="username" placeholder="Enter username" name="username">
                             </div>
-                            <label  class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="username">{{errors.username}}</label>
+                            <label id="error" class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="username">{{errors.username}}</label>
                         </div>
                         <div class="form-group row">
                             <label class="control-label col-sm-3" for="email">Email:</label>
                             <div class="col-sm-9">
                                 <input type="email" class="form-control" ng-model="user.email" id="email" placeholder="Enter email" name="email">
                             </div>
-                            <label  class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="email">{{errors.email}}</label>
+                            <label id="error" class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="email">{{errors.email}}</label>
                         </div>
                         <div class="form-group row">
                             <label class="control-label col-sm-3" for="password">Password:</label>
                             <div class="col-sm-9">          
                                 <input type="password" class="form-control" ng-model="user.password" id="password" placeholder="Enter password" name="password">
                             </div>
-                            <label  class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="password">{{errors.password}}</label>
+                            <label id="error" class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="password">{{errors.password}}</label>
                         </div>
                         <div class="form-group row">
                             <label class="control-label col-sm-3" for="password">Password again:</label>
                             <div class="col-sm-9">          
                                 <input type="password" class="form-control" ng-model="user.password2" id="password2" placeholder="Enter password" name="password2">
                             </div>
-                            <label  class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="password2">{{errors.password2}}</label>
+                            <label id="error" class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="password2">{{errors.password2}}</label>
                         </div>
                         <div class="form-group row">
                             <div class="offset-sm-3 col-sm-9">
@@ -91,7 +92,7 @@ $messages = $flashData["messages"] ? : [];
                                     <label><input type="checkbox" ng-model="user.agree" id="agree" name="agree" value="true"> I accept <a href="#" data-toggle="modal" data-target="#myModal">terms & conditions</a>.</label>
                                 </div>
                             </div>
-                            <label  class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="agree">{{errors.agree}}</label>
+                            <label id="error" class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="agree">{{errors.agree}}</label>
                         </div>
                         <div class="form-group row">        
                             <div class="offset-sm-3 col-sm-9">

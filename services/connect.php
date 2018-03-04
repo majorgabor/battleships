@@ -39,7 +39,7 @@ function get_password_for_verify($username){
             return $row["password"];
         }
     }
-    return false;
+    return NULL;
 }
 
 //used in accountinfo.php
@@ -86,13 +86,14 @@ function get_usernames(){
     return NULL;
 }
 
-function get_username_by_code($code){
+//used in methods.php
+function get_code_for_remember($username){
     global $database;
-    $sql = "SELECT username FROM users WHERE 'code' = '".$code."'";
+    $sql = "SELECT code FROM users WHERE username = '".$username."'";
     if($select = $database->query($sql)){
         if($select->num_rows){
             $row = $select->fetch_assoc();
-            return $row["username"];
+            return $row["code"];
         }
     }
     return NULL;
