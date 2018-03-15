@@ -61,7 +61,7 @@ if(isset($_SESSION["logged_in"])){
                         <div class="form-group row">
                             <label class="control-label col-sm-3" for="username">Username:</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" ng-model="user.username" id="username" placeholder="Enter username" name="username">
+                                <input type="text" class="form-control" ng-model="user.username" id="username" placeholder="Enter username" name="username" data-toggle="tooltip" data-placement="right" title="Give a unique username for your account. It can't be modified later.">
                             </div>
                             <label id="error" class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="username">{{errors.username}}</label>
                         </div>
@@ -75,7 +75,7 @@ if(isset($_SESSION["logged_in"])){
                         <div class="form-group row">
                             <label class="control-label col-sm-3" for="password">Password:</label>
                             <div class="col-sm-9">          
-                                <input type="password" class="form-control" ng-model="user.password" id="password" placeholder="Enter password" name="password">
+                                <input type="password" class="form-control" ng-model="user.password" id="password" placeholder="Enter password" name="password" data-toggle="tooltip" data-placement="right" title="Give a secure password! At least 6 character.">
                             </div>
                             <label id="error" class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="password">{{errors.password}}</label>
                         </div>
@@ -125,5 +125,10 @@ if(isset($_SESSION["logged_in"])){
 <!-- End Modal -->
     </div>
     <script src="../../controllers/signupCtrl.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
+    </script>
 </body>
 </html>

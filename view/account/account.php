@@ -105,28 +105,28 @@
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" ng-model="modify.firstname" id="firstname" placeholder="{{user.firstname}}" name="firstname">
                                 </div>
-                                <label  class="control-label col-sm-9 offset-sm-3 {{modify_errors.hide}}" for="firstname">{{modify_errors.firstname}}</label>
+                                <label id="error" class="control-label col-sm-9 offset-sm-3 {{modify_errors.hide}}" for="firstname">{{modify_errors.firstname}}</label>
                             </div>
                             <div class="form-group row">
                                 <label class="control-label col-sm-3" for="lastname">Lastname:</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" ng-model="modify.lastname" id="lastname" placeholder="{{user.lastname}}" name="lastname">
                                 </div>
-                                <label  class="control-label col-sm-9 offset-sm-3 {{modify_errors.hide}}" for="lastname">{{modify_errors.lastname}}</label>
+                                <label id="error" class="control-label col-sm-9 offset-sm-3 {{modify_errors.hide}}" for="lastname">{{modify_errors.lastname}}</label>
                             </div>
                             <div class="form-group row">
                                 <label class="control-label col-sm-3" for="email">Email:</label>
                                 <div class="col-sm-9">
                                     <input type="email" class="form-control" ng-model="modify.email" id="email" placeholder="{{user.email}}" name="email">
                                 </div>
-                                <label  class="control-label col-sm-9 offset-sm-3 {{modify_errors.hide}}" for="email">{{modify_errors.email}}</label>
+                                <label id="error" class="control-label col-sm-9 offset-sm-3 {{modify_errors.hide}}" for="email">{{modify_errors.email}}</label>
                             </div>
                             <div class="form-group row">
                                 <label class="control-label col-sm-3" for="password">Comfirm Password:</label>
                                 <div class="col-sm-9">          
                                     <input type="password" class="form-control" ng-model="modify.password" id="password" placeholder="Enter password" name="password">
                                 </div>
-                                <label  class="control-label col-sm-9 offset-sm-3 {{modify_errors.hide}}" for="password">{{modify_errors.password}}</label>
+                                <label id="error" class="control-label col-sm-9 offset-sm-3 {{modify_errors.hide}}" for="password">{{modify_errors.password}}</label>
                             </div>
                             <div class="form-group row">        
                                 <div class="offset-sm-3 col-sm-9">

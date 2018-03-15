@@ -34,8 +34,10 @@ app.controller("loginCtrl", function($scope, $http) {
                     text : response.data.message
                 };
             }
+            $scope.user.password = undefined;
         }, function(response) {
             console.log(response.status, response.statusText);
+            $scope.user.password = undefined;
         });
     };
 });

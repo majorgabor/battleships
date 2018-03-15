@@ -91,24 +91,30 @@ remember();
                 <div class="carousel-item active">
                     <img src="../../images/ship_1.jpg" alt="Ship1">
                     <div class="carousel-caption">
-                        <h3>The War is Now</h3>
-                        <p>Fight against the enemy!</p>
+                        <div class="carousel_background">
+                            <h3>The War is Now</h3>
+                            <p>Fight against the enemy!</p>
+                        </div>
                         <a class="btn btn-lg btn-primary" href="../account/account.php" role="button">Play Now</a>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="../../images/ship_2.jpg" alt="Ship2">
                     <div class="carousel-caption">
-                        <h3>We Need You</h3>
-                        <p>Join to the battle and win the war!</p>
+                        <div class="carousel_background">
+                            <h3>We Need You</h3>
+                            <p>Join to the battle and win the war!</p>
+                        </div>
                         <a class="btn btn-lg btn-primary" href="../signup/signup.php" role="button">Sign Up</a>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="../../images/ship_6.jpg" alt="Ship6">
                     <div class="carousel-caption">
-                        <h3>Destroy Them</h3>
-                        <p>The louck isn't enought. Prove that you have the best strategy!</p>
+                        <div class="carousel_background">
+                            <h3>Destroy Them</h3>
+                            <p>The louck isn't enought. Prove that you have the best strategy!</p>
+                        </div>
                         <a class="btn btn-lg btn-primary" href="../account/account.php" role="button">Play Now</a>
                         <a class="btn btn-lg btn-primary" href="../signup/signup.php" role="button">Sign Up</a>
                     </div>

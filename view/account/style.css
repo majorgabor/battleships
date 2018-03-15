@@ -16,6 +16,10 @@ div#first_row div#second_grid {
     height: 90.93%;
 }
 
+label#error {
+    color: red;
+}
+
 div.row {
     margin: 0px;
 }

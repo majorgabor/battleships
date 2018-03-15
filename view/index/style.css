@@ -33,3 +33,13 @@ div#first_row p {
 div#myCarousel img {
     width: 100%;
 }
+
+div#myCarousel div.carousel_background {
+    background-color: #343a40;
+    width: 50%;
+    position: relative;
+    left: 25%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 50px;
+}

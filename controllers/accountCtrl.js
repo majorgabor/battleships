@@ -47,8 +47,10 @@ app.controller("accountCtrl", function($scope, $http){
                     text : response.data.message
                 };
             }
+            $scope.modify.password = undefined;
         }, function(response){
             console.log(response.status, response.statusText);
+            $scope.modify.password = undefined;
         });
     };
 
@@ -84,8 +86,10 @@ app.controller("accountCtrl", function($scope, $http){
                     text : response.data.message
                 };
             }
+            $scope.change_password = undefined;
         }, function(response){
             console.log(response.status, response.statusText);
+            $scope.change_password = undefined;
         });
     };
 });
