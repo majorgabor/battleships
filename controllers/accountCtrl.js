@@ -3,8 +3,10 @@ var app = angular.module("myApp", []);
 
 app.controller("accountCtrl", function($scope, $http){
     // get info
+    $scope.loading = true;
     $scope.user = {};
     $scope.fresh = function(){
+        $scope.loading = true;
         $http({
             method: "POST",
             url: "../../services/accountinfo.php"
@@ -13,10 +15,12 @@ app.controller("accountCtrl", function($scope, $http){
         }, function(response){
             console.log(response.status, response.statusText);
         });
+        $scope.loading = false;
     };
     $scope.fresh();
 
     //modify profile
+
     $scope.modify_errors = {};
     $scope.modify_message = {};
 
@@ -47,11 +51,10 @@ app.controller("accountCtrl", function($scope, $http){
                     text : response.data.message
                 };
             }
-            $scope.modify.password = undefined;
         }, function(response){
             console.log(response.status, response.statusText);
-            $scope.modify.password = undefined;
         });
+        $scope.modify = undefined;
     };
 
     // change password
@@ -86,10 +89,22 @@ app.controller("accountCtrl", function($scope, $http){
                     text : response.data.message
                 };
             }
-            $scope.change_password = undefined;
         }, function(response){
             console.log(response.status, response.statusText);
-            $scope.change_password = undefined;
         });
+        $scope.change_password = undefined;
     };
+
+    //match makeing
+
+    $scope.matchMaking = function(){
+        $http({
+            method : "POST",
+            url    : "../../services/match_making/client.php"
+        }).then(function(response){
+            window.location="../game/game.php"
+        }, function(response){
+            console.log(response.status, response.statusText);
+        })
+    }
 });

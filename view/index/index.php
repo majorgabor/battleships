@@ -26,16 +26,18 @@ remember();
             <?php if(isset($_SESSION["logged_in"])) :?>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <span class="navbar-text">Logged in as</span>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../account/account.php" ><b><?php echo $_SESSION["logged_in"]; ?></b></a>
+                    <span class="navbar-text">Logged in as <b><?php echo $_SESSION["logged_in"]; ?></b></span>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                        <a class="nav-link" href="../account/account.php" >
+                            <span class="oi oi-person" title="account" aria-hidden="true"></span>
+                        Account</a>
+                    </li>
+                <li class="nav-item">
                     <a class="nav-link" href="../../services/logout.php" >
-                        <span class="oi oi-account-logout" title="account logout" aria-hidden="true"></span>
+                        <span class="oi oi-account-logout" title="logout" aria-hidden="true"></span>
                     Logout</a>
                 </li>
             </ul>
@@ -43,12 +45,12 @@ remember();
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="../login/login.php" >
-                        <span class="oi oi-account-login" title="account login" aria-hidden="true"></span>
+                        <span class="oi oi-account-login" title="login" aria-hidden="true"></span>
                     LogIn</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../signup/signup.php">
-                    <span class="oi oi-person" title="person" aria-hidden="true"></span>
+                    <span class="oi oi-people" title="singup" aria-hidden="true"></span>
                     Sign Up</a>
                 </li>
             </ul>

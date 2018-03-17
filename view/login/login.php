@@ -35,7 +35,7 @@ $message = $flashData["message"] ? : [];
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="../signup/signup.php">
-                        <span class="oi oi-person" title="person" aria-hidden="true"></span>
+                        <span class="oi oi-people" title="singup" aria-hidden="true"></span>
                         Sign Up</a>
                     </li>
                 </ul>

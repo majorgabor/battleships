@@ -34,6 +34,11 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
+                        <a class="nav-link" href="" ng-click="matchMaking()" >
+                            <span class="oi oi-flag" title="start game" aria-hidden="true"></span>
+                        Start Game</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="../../services/logout.php" >
                             <span class="oi oi-account-logout" title="account logout" aria-hidden="true"></span>
                         Logout</a>
@@ -42,53 +47,78 @@
             </div>
         </nav>
 <!-- End Menu -->
+        <div ng-show="loading">
+            <img src="../../images/loading.gif">
+        </div>
 <!-- Firs Row -->
-        <div id="first_row" class="row">
-            <div class="offset-xl-2 col-xl-5 offset-lg-1 col-lg-6 col-md-7 col-sm-12 col-xs-12">
-                <div class="jumbotron">
-                    <table>
-                        <tr>
-                            <td><h3>Name</h3></td>
-                            <td>{{user.firstname}} {{user.lastname}}</td>
-                        </tr>
-                        <tr>
-                            <td><h3>Username</h3></td>
-                            <td>{{user.username}}</td>
-                        </tr>
-                        <tr>
-                            <td><h3>Email</h3></td>
-                            <td>{{user.email}}</td>
-                        </tr>
-                    </table>
-                    <br>
-                    <div id="buttons" class="container">
-                        <div class="btn-group">
-                            <button type="button" data-toggle="modal" data-target="#modifyProfileModel" class="btn btn-primary">Modify Profile</button>
-                            <button type="button" data-toggle="modal" data-target="#passwordChangeModal" class="btn btn-primary">Change Password</button>
+        <div ng-show="!loading" >
+            <div id="first_row" class="row">
+                <div class="offset-xl-2 col-xl-5 offset-lg-1 col-lg-6 col-md-7 col-sm-12 col-xs-12">
+                    <div class="jumbotron">
+                        <h3>Account</h3>
+                        <br>
+                        <table>
+                            <tr>
+                                <td><h3>Name</h3></td>
+                                <td>{{user.firstname}} {{user.lastname}}</td>
+                            </tr>
+                            <tr>
+                                <td><h3>Username</h3></td>
+                                <td>{{user.username}}</td>
+                            </tr>
+                            <tr>
+                                <td><h3>Email</h3></td>
+                                <td>{{user.email}}</td>
+                            </tr>
+                        </table>
+                        <br>
+                        <div id="buttons" class="container">
+                            <div class="btn-group">
+                                <button type="button" data-toggle="modal" data-target="#modifyProfileModel" class="btn btn-primary">Modify Profile</button>
+                                <button type="button" data-toggle="modal" data-target="#passwordChangeModal" class="btn btn-primary">Change Password</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12 col-xs-12">
+                    <div id="second_grid" class="jumbotron">
+                        <h3>Statistic</h3>
+                        <br>
+                        <table>
+                            <tr>
+                                <td><h3>Battles</h3></td>
+                                <td>{{user.battles}}</td>
+                            </tr>
+                            <tr>
+                                <td><h3>Wins</h3></td>
+                                <td>{{user.wins}}</td>
+                            </tr>
+                            <tr>
+                                <td><h3>Points</h3></td>
+                                <td>{{user.points}}</td>
+                            </tr>
+                        </table>
+                        <br>
+                        <div class="container">
+                            <button type="button" class="btn btn-primary">View Scoreboard</button>                    
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12 col-xs-12">
-                <div id="second_grid" class="jumbotron">
-                    <table>
-                        <tr>
-                            <td><h3>Battles</h3></td>
-                            <td>{{user.battles}}</td>
-                        </tr>
-                        <tr>
-                            <td><h3>Wins</h3></td>
-                            <td>{{user.wins}}</td>
-                        </tr>
-                        <tr>
-                            <td><h3>Points</h3></td>
-                            <td>{{user.points}}</td>
-                        </tr>
-                    </table>
+<!-- End First Row -->
+<!-- The Second Row -->
+            <div id="second_row" class="row">
+                <div class="offset-xl-2 col-xl-8 offset-lg-1 col-lg-10 col-md-21 col-sm-12 col-xs-12">
+                    <div class="jumbotron">
+                        <div class="container">
+                            <h3>Join to Battle</h3>
+                            <button type="button" class="btn btn-primary" ng-click="matchMaking()">Start Game</button>                    
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-<!-- End Firs Row -->
+<!-- End Second Row -->
 <!-- The Modify Modal -->
         <div class="modal fade" id="modifyProfileModel">
             <div class="modal-dialog modal-lg modal-dialog-centered">

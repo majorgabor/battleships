@@ -8,12 +8,13 @@ div#first_row table {
     text-align: center;
 }
 
-div#first_row div#buttons {
+div#first_row h3 {
     text-align: center;
 }
 
-div#first_row div#second_grid {
-    height: 90.93%;
+div#first_row .container,
+div#second_row .container {
+    text-align: center;
 }
 
 label#error {
