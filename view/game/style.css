@@ -1,0 +1,34 @@
+div#first_row {
+    padding-top: 20px;
+}
+
+div#first_row .jumbotron {
+    padding: 32px;
+}
+
+div.row {
+    margin: 0px;
+}
+
+#game_row .jumbotron {
+    padding-top: 32px;
+}
+
+.jumbotron h3 {
+    text-align: center;
+}
+
+#game_row table {
+    margin: auto;
+}
+
+#game_row table tr td {
+    border: 1px solid black;
+    padding: 0px;
+    width: 58.8px;
+    height: 58.8px;
+}
+
+.container {
+    text-align: center;
+}
