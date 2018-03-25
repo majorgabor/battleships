@@ -1,5 +1,5 @@
 
-var myShips = document.getElementById('myBattlefield');
+var myShips = document.getElementById("myBattlefield");
 
 var table = document.createElement("table");
 

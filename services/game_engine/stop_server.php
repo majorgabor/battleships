@@ -2,7 +2,7 @@
 
 require_once "address.php";
 
-echo "Try to stop server.\n";
+echo "<p>Try to stop server.</p><br>";
 
 $msg = "STOP_SERVER";
 
@@ -13,5 +13,5 @@ socket_write($socket, $msg, strlen($msg)) or die("Could not send data to server\
 
 socket_close($socket);
 
-echo "STOP signal sendt.\n";
+echo "<p>STOP signal sendt.</p><br>";
 ?>

@@ -1,7 +1,7 @@
 
 let shipArray = [];
 
-var myShips = document.getElementById('myShips');
+var myShips = document.getElementById("myShips");
 var table = document.createElement("table");
 for(i = 0; i < 10; i++){
     var tr = document.createElement("tr");
@@ -83,24 +83,34 @@ function markShip(x, y, orientation, length, type){
 }
 
 $(document).ready(function(){
+    $("#ready").hide();
+    
     let placeinfShipId = 7;
-    $("#myShips").find("td").click(function(){
+    
+    $("#myShips").find("td").on("click", function(){
         let x = parseInt(this.dataset.x);
         let y = parseInt(this.dataset.y);
         if(isPlacebal(x, y, "horisontal", shipSize[placeinfShipId])){
             markShip(x, y, "horisontal", shipSize[placeinfShipId], placeinfShipId);
             placeinfShipId--;
         }
-    }).contextmenu(function(){
+        if(placeinfShipId === 0){
+            $("#ready").show();    
+        }
+    }).on("contextmenu", function(){
         let x = parseInt(this.dataset.x);
         let y = parseInt(this.dataset.y);
         if(isPlacebal(x, y, "vertical", shipSize[placeinfShipId])){
             markShip(x, y, "vertical", shipSize[placeinfShipId], placeinfShipId);
             placeinfShipId--;
         }
+        if(placeinfShipId === 0){
+            $("#ready").show();  
+        }
     });
     
-    $("#reset").click(function(){
+    $("#reset").on("click", function(){
+        $("#ready").hide();
         placeinfShipId = 7;
         for(i = 0; i < 10; i++){
             for(j = 0; j < 10; j++){
@@ -111,17 +121,11 @@ $(document).ready(function(){
         }
     });
 
-    $("#ready").click(function(){
-        if(placeinfShipId <= 0){
-            $("#reset").prop('disabled', true);
-            $("#ready").prop('disabled', true);
-            $("#random").prop('disabled', true);
-            
-        }
-        
+    $("#ready").on("click", function(){
+        $("#shipPlaceButtons").hide();
     });
 
-    $("#random").click(function(){
+    $("#random").on("click", function(){
         $("#reset").trigger("click");
         let orientation;
         let x, y;
@@ -138,5 +142,6 @@ $(document).ready(function(){
                 placeinfShipId--;
             }
         }
+        $("#ready").show();        
     });
 });

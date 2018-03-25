@@ -22,7 +22,7 @@ app.controller("loginCtrl", function($scope, $http) {
                     type : "success",
                     text : response.data.message
                 };
-                window.location="../account/account.php";
+                setTimeout(function() {window.location="../account/account.php";}, 1000);
             } else {
                 if(response.data.errors != undefined){
                     $scope.errors = response.data.errors;

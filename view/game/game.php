@@ -3,6 +3,7 @@
 session_start();
 echo "you are ".$_SESSION["logged_in"]."<br>";
 echo "your enemy is ".$_SESSION["enemy"]."<br>";
+echo "port is ".$_SESSION["game_engine_port"]."<br>";
 ?>
 <html lang="en">
 <head>
@@ -46,7 +47,7 @@ echo "your enemy is ".$_SESSION["enemy"]."<br>";
         <div id="first_row" class="row">
             <div class="col-12">
                 <div class="jumbotron">
-                    <h3>Your enemy is <b>XXX</b></h3>
+                    <h3>Your enemy is <b><?php echo $_SESSION["enemy"]; ?></b></h3>
                     <br>
                     <div class="container">
                         <button type="button" class="btn btn-primary">Exit Game</button>
@@ -63,7 +64,7 @@ echo "your enemy is ".$_SESSION["enemy"]."<br>";
                     <br>
                     <div id="myShips" ng-modell="setShip"></div>
                     <br>
-                    <div class="container">
+                    <div id="shipPlaceButtons" class="container">
                         <div class="btn-group">
                             <button id="reset" type="button" class="btn btn-primary">Reset Table</button>
                             <button id="ready" type="button" class="btn btn-primary">Ready</button>
@@ -72,7 +73,7 @@ echo "your enemy is ".$_SESSION["enemy"]."<br>";
                     </div>
                 </div>
                 <div class="alert alert-primary">
-                    You have to step in XX secons!
+                    You have to step in {{shipPlaceCounter}} secons!
                 </div>
             </div>
             <div class="col-xl-6 col-lg-12">
@@ -91,6 +92,44 @@ echo "your enemy is ".$_SESSION["enemy"]."<br>";
             </div>
         </div>
 <!-- End Game Row -->
+<!-- Change Password Change Modal -->
+<div class="modal fade" id="acceptBattleModal">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Battle request</h4>
+                    </div>
+                    <div class="modal-body">
+                    <div class="container">
+                        <h3>Your enemy is <b><?php echo $_SESSION["enemy"]; ?></b></h3>
+                        <br>
+                        <div id="requestButtons">
+                            <button id="accept" type="button" class="btn btn-success">Accept</button>
+                            <button id="discard" type="button" class="btn btn-danger">Discard</button>
+                        </div>
+                        <!-- <div id="waitingForOpponent" class="alert alert-primary">
+                            Waiting for your other player reaction.
+                        </div> -->
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div id="requesrCounter">
+                            Answer in {{requestCounter}} seconds.
+                        </div>
+                        <div id="requesrWaiting">
+                            Waiting for the enemy.
+                        </div>
+                        <div id="enemyDiscarded">
+                            Enemy player is discarded.
+                        </div>
+                        <div id="youDiscarded">
+                            You discard.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- End Password Change Modal -->
         <script src="../../js/shipTable.js"></script>
         <script src="../../js/battleTable.js"></script>
     </div>
