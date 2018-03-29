@@ -2,6 +2,7 @@
 <?php
 
 require_once "services/methods.php";
+remember();
 if(isset($_SESSION["logged_in"])){
     redirect("./account");
 }

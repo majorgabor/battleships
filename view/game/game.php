@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php
-session_start();
+
+require_once "services/methods.php";
+auth();
 echo "you are ".$_SESSION["logged_in"]."<br>";
 echo "your enemy is ".$_SESSION["enemy"]."<br>";
 echo "port is ".$_SESSION["game_engine_port"]."<br>";
