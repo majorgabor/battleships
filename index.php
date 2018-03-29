@@ -17,11 +17,8 @@ switch ($request_uri[0]) {
         require 'view/account/account.php';
         break;
     case '/battleships/game':
-        require 'view/gmae/gmae.php';
+        require 'view/game/game.php';
         break;
-    // case '/battleships/game':
-    //     require 'view/gmae/gmae.php';
-    //     break;
     default:
         header('HTTP/1.0 404 Not Found');
         // require 'view/404/404.php';

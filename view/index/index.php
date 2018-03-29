@@ -97,7 +97,7 @@ remember();
                             <h3>The War is Now</h3>
                             <p>Fight against the enemy!</p>
                         </div>
-                        <a class="btn btn-lg btn-primary" href="./account.php" role="button">Play Now</a>
+                        <a class="btn btn-lg btn-primary" href="./account" role="button">Play Now</a>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -107,7 +107,7 @@ remember();
                             <h3>We Need You</h3>
                             <p>Join to the battle and win the war!</p>
                         </div>
-                        <a class="btn btn-lg btn-primary" href="./signup.php" role="button">Sign Up</a>
+                        <a class="btn btn-lg btn-primary" href="./signup" role="button">Sign Up</a>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -117,8 +117,8 @@ remember();
                             <h3>Destroy Them</h3>
                             <p>The louck isn't enought. Prove that you have the best strategy!</p>
                         </div>
-                        <a class="btn btn-lg btn-primary" href="./account.php" role="button">Play Now</a>
-                        <a class="btn btn-lg btn-primary" href="./signup.php" role="button">Sign Up</a>
+                        <a class="btn btn-lg btn-primary" href="./account" role="button">Play Now</a>
+                        <a class="btn btn-lg btn-primary" href="./signup" role="button">Sign Up</a>
                     </div>
                 </div>
             </div>

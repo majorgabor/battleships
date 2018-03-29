@@ -42,7 +42,7 @@ app.controller("gameCtrl", function($scope, $http, $timeout){
     $scope.sendAnswerForRequest = function(){
         $http({
             method: "POST",
-            url: "../../services/game_engine/accept_client.php",
+            url: "services/game_engine/accept_client.php",
             data: $scope.requestAnswer
         }).then(function(response){
             $timeout.cancel(mytimeout);           
@@ -51,10 +51,10 @@ app.controller("gameCtrl", function($scope, $http, $timeout){
             if($scope.requestAnswer === "accept" && response.data === "accept"){
                 $("#acceptBattleModal").modal("hide");
             } else if($scope.requestAnswer === "discard"){
-                window.location = "../account/account.php";
+                window.location = "./account";
             } else if(response.data === "discard"){
                 $("#enemyDiscarded").show();
-                setTimeout(function() {window.location = "../account/account.php"; }, 1500);
+                setTimeout(function() {window.location = "./account"; }, 1500);
             } else {
                 console.log(response.data);
             }
@@ -66,10 +66,10 @@ app.controller("gameCtrl", function($scope, $http, $timeout){
     $scope.sendPlaceShipTimeout = function(){
         $http({
             method: "POST",
-            url: "../../services/game_engine/client.php",
+            url: "services/game_engine/client.php",
             data: "PLACESHIP_TIMEOUT"
         }).then(function(response){
-            setTimeout(function() {window.location = "../account/account.php"; }, 1500);
+            setTimeout(function() {window.location = "./account"; }, 1500);
         }, function(response){
             console.log(response.status, response.statusText);
         });
