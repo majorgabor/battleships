@@ -29,13 +29,13 @@ app.controller("gameCtrl", function($scope, $http, $timeout){
     }
     var mytimeout = $timeout($scope.requestTimeout,1000);
 
-    $scope.shipPlaceCounter = 20;
-    $scope.shipPlaceTimeout = function(){
-        $scope.shipPlaceCounter--;
-        if($scope.shipPlaceCounter > 0){
-            mytimeout = $timeout($scope.shipPlaceTimeout,1000);
+    $scope.placeShipCounter = 20;
+    $scope.placeShipTimeout = function(){
+        $scope.placeShipCounter--;
+        if($scope.placeShipCounter > 0){
+            mytimeout = $timeout($scope.placeShipTimeout,1000);
         } else {
-            // $("#discard").trigger("click");            
+            $scope.sendPlaceShipTimeout();
         }
     }   
 
@@ -47,14 +47,14 @@ app.controller("gameCtrl", function($scope, $http, $timeout){
         }).then(function(response){
             $timeout.cancel(mytimeout);           
             $("#requesrWaiting").hide();
-            mytimeout = $timeout($scope.shipPlaceTimeout,1000);
+            mytimeout = $timeout($scope.placeShipTimeout,1000);
             if($scope.requestAnswer === "accept" && response.data === "accept"){
                 $("#acceptBattleModal").modal("hide");
             } else if($scope.requestAnswer === "discard"){
                 window.location = "../account/account.php";
             } else if(response.data === "discard"){
                 $("#enemyDiscarded").show();
-                setTimeout(function() {window.location = "../account/account.php"; }, 1500);                
+                setTimeout(function() {window.location = "../account/account.php"; }, 1500);
             } else {
                 console.log(response.data);
             }
@@ -63,8 +63,16 @@ app.controller("gameCtrl", function($scope, $http, $timeout){
         });
     };
 
-    $scope.readyShipPlace = function(){
-
+    $scope.sendPlaceShipTimeout = function(){
+        $http({
+            method: "POST",
+            url: "../../services/game_engine/client.php",
+            data: "PLACESHIP_TIMEOUT"
+        }).then(function(response){
+            setTimeout(function() {window.location = "../account/account.php"; }, 1500);
+        }, function(response){
+            console.log(response.status, response.statusText);
+        });
     }
 
     $(document).ready(function(){
@@ -80,10 +88,13 @@ app.controller("gameCtrl", function($scope, $http, $timeout){
             $scope.sendAnswerForRequest();
         });
         $("#requestButtons").on("click", function(){
-            $timeout.cancel(requestTimeout);
+            $timeout.cancel($scope.requestTimeout);
             $("#discard").prop("disabled", true);
             $("#accept").prop("disabled", true);
             $("#requesrCounter").hide();
+        });
+        $("#ready").on("click", function(){
+            $timeout.cancel($scope.placeShipTimeout);            
         });
     });
 });

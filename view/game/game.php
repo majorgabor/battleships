@@ -73,7 +73,7 @@ echo "port is ".$_SESSION["game_engine_port"]."<br>";
                     </div>
                 </div>
                 <div class="alert alert-primary">
-                    You have to step in {{shipPlaceCounter}} secons!
+                    You have to step in {{placeShipCounter}} secons!
                 </div>
             </div>
             <div class="col-xl-6 col-lg-12">

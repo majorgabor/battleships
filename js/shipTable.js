@@ -108,7 +108,6 @@ $(document).ready(function(){
             $("#ready").show();  
         }
     });
-    
     $("#reset").on("click", function(){
         $("#ready").hide();
         placeinfShipId = 7;
@@ -120,11 +119,9 @@ $(document).ready(function(){
             }
         }
     });
-
     $("#ready").on("click", function(){
         $("#shipPlaceButtons").hide();
     });
-
     $("#random").on("click", function(){
         $("#reset").trigger("click");
         let orientation;
@@ -143,5 +140,14 @@ $(document).ready(function(){
             }
         }
         $("#ready").show();        
+    });
+    $("#ready").on("click", function(){
+        $.ajax({
+            method: "POST",
+            url: "../../services/game_engine/client.php",
+            data: { type: "SHIPS", data: JSON.stringify(shipArray) },
+        }).done(function(response){
+            console.log(response);
+        });
     });
 });
