@@ -60,7 +60,7 @@ function remember(){
             save_to_flash([
                 "message" => "You must LogIn first."
             ]);
-            redirect('../login/login.php');
+            redirect('./login');
         }
     }
 }

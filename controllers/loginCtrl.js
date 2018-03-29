@@ -12,7 +12,7 @@ app.controller("loginCtrl", function($scope, $http) {
     $scope.submitForm = function() {
         $http({
             method: "POST",
-            url: "../../services/auth.php",
+            url: "services/auth.php",
             data: $scope.user
         }).then(function(response) {
             $scope.errors.hide = "d-none";
@@ -22,7 +22,7 @@ app.controller("loginCtrl", function($scope, $http) {
                     type : "success",
                     text : response.data.message
                 };
-                setTimeout(function() {window.location="../account/account.php";}, 1000);
+                setTimeout(function() {window.location="./account";}, 1000);
             } else {
                 if(response.data.errors != undefined){
                     $scope.errors = response.data.errors;

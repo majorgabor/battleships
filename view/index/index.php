@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-require_once "../../services/methods.php";
+require_once "services/methods.php";
 remember();
 
 ?>
@@ -8,17 +8,17 @@ remember();
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="view/index/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <link href="../../open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+    <link href="open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
     <title>Battleships</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-        <a class="navbar-brand" href="index.php">Battleships game</a>
+        <a class="navbar-brand" href="./">Battleships game</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,12 +31,12 @@ remember();
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                        <a class="nav-link" href="../account/account.php" >
+                        <a class="nav-link" href="./account" >
                             <span class="oi oi-person" title="account" aria-hidden="true"></span>
                         Account</a>
                     </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../services/logout.php" >
+                    <a class="nav-link" href="services/logout.php" >
                         <span class="oi oi-account-logout" title="logout" aria-hidden="true"></span>
                     Logout</a>
                 </li>
@@ -44,12 +44,12 @@ remember();
             <?php else : ?>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../login/login.php" >
+                    <a class="nav-link" href="./login" >
                         <span class="oi oi-account-login" title="login" aria-hidden="true"></span>
                     LogIn</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../signup/signup.php">
+                    <a class="nav-link" href="./signup">
                     <span class="oi oi-people" title="singup" aria-hidden="true"></span>
                     Sign Up</a>
                 </li>
@@ -91,34 +91,34 @@ remember();
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="../../images/ship_1.jpg" alt="Ship1">
+                    <img src="images/ship_1.jpg" alt="Ship1">
                     <div class="carousel-caption">
                         <div class="carousel_background">
                             <h3>The War is Now</h3>
                             <p>Fight against the enemy!</p>
                         </div>
-                        <a class="btn btn-lg btn-primary" href="../account/account.php" role="button">Play Now</a>
+                        <a class="btn btn-lg btn-primary" href="./account" role="button">Play Now</a>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="../../images/ship_2.jpg" alt="Ship2">
+                    <img src="images/ship_2.jpg" alt="Ship2">
                     <div class="carousel-caption">
                         <div class="carousel_background">
                             <h3>We Need You</h3>
                             <p>Join to the battle and win the war!</p>
                         </div>
-                        <a class="btn btn-lg btn-primary" href="../signup/signup.php" role="button">Sign Up</a>
+                        <a class="btn btn-lg btn-primary" href="./signup" role="button">Sign Up</a>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="../../images/ship_6.jpg" alt="Ship6">
+                    <img src="images/ship_6.jpg" alt="Ship6">
                     <div class="carousel-caption">
                         <div class="carousel_background">
                             <h3>Destroy Them</h3>
                             <p>The louck isn't enought. Prove that you have the best strategy!</p>
                         </div>
-                        <a class="btn btn-lg btn-primary" href="../account/account.php" role="button">Play Now</a>
-                        <a class="btn btn-lg btn-primary" href="../signup/signup.php" role="button">Sign Up</a>
+                        <a class="btn btn-lg btn-primary" href="./account" role="button">Play Now</a>
+                        <a class="btn btn-lg btn-primary" href="./signup" role="button">Sign Up</a>
                     </div>
                 </div>
             </div>

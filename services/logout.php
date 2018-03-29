@@ -10,6 +10,6 @@ save_to_flash([
     "message" => "Sucsesfully logged out."
 ]);
 
-redirect("../view/login/login.php");
+redirect("../login");
 
 ?>

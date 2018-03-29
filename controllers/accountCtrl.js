@@ -9,7 +9,7 @@ app.controller("accountCtrl", function($scope, $http){
         $scope.loading = true;
         $http({
             method: "POST",
-            url: "../../services/accountinfo.php"
+            url: "services/accountinfo.php"
         }).then(function(response){
             $scope.user = response.data;
         }, function(response){
@@ -30,7 +30,7 @@ app.controller("accountCtrl", function($scope, $http){
     $scope.submitModify = function(){
         $http({
             method : "POST",
-            url    : "../../services/modify.php",
+            url    : "services/modify.php",
             data   : $scope.modify
         }).then(function(response){
             $scope.modify_errors.hide = "d-none";
@@ -68,7 +68,7 @@ app.controller("accountCtrl", function($scope, $http){
     $scope.submitPasswordChange = function(){
         $http({
             method : "POST",
-            url    : "../../services/changepwd.php",
+            url    : "services/changepwd.php",
             data   : $scope.change_password
         }).then(function(response){
             $scope.changePassword_errors.hide = "d-none";
@@ -100,9 +100,9 @@ app.controller("accountCtrl", function($scope, $http){
     $scope.matchMaking = function(){
         $http({
             method : "POST",
-            url    : "../../services/match_making/client.php"
+            url    : "services/match_making/client.php"
         }).then(function(response){
-            window.location="../game/game.php"
+            window.location="./game"
         }, function(response){
             console.log(response.status, response.statusText);
         })

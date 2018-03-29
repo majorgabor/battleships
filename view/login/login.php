@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php
 
-require_once "../../services/methods.php";
+require_once "services/methods.php";
 if(isset($_SESSION["logged_in"])){
-    redirect("./account/account.php");
+    redirect("./account");
 }
 
 $flashData = load_from_flash();
@@ -15,26 +15,26 @@ $message = $flashData["message"] ? : [];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="view/login/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <link href="../../open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+    <link href="open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
     <title>Login</title>
 </head>
 <body>
     <div ng-app="myApp" ng-controller="loginCtrl">
         <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-            <a class="navbar-brand" href="../index/index.php">Battleships game</a>
+            <a class="navbar-brand" href="./">Battleships game</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../signup/signup.php">
+                        <a class="nav-link" href="./signup">
                         <span class="oi oi-people" title="singup" aria-hidden="true"></span>
                         Sign Up</a>
                     </li>
@@ -98,6 +98,6 @@ $message = $flashData["message"] ? : [];
         </div>
     </div>
 <!-- End Second Row -->
-    <script src="../../controllers/loginCtrl.js"></script>
+    <script src="controllers/loginCtrl.js"></script>
 </body>
 </html>

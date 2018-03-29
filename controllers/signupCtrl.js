@@ -12,7 +12,7 @@ app.controller("signupCtrl", function($scope, $http){
     $scope.submitSingup = function(){
         $http({
             method : "POST",
-            url    : "../../services/register.php",
+            url    : "services/register.php",
             data   : $scope.user
         }).then(function(response){
             $scope.errors.hide = "d-none";
@@ -22,7 +22,7 @@ app.controller("signupCtrl", function($scope, $http){
                     type : "success",
                     text : response.data.message
                 };
-                window.location="../login/login.php";
+                window.location="./login";
             } else {
                 if(response.data.errors != undefined){
                     $scope.errors = response.data.errors;
