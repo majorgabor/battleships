@@ -15,7 +15,7 @@ echo "port is ".$_SESSION["game_engine_port"]."<br>";
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <link href="../../open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+    <link href="open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
     <title>Game</title>
 </head>
 <body oncontextmenu="return false;">
@@ -130,9 +130,9 @@ echo "port is ".$_SESSION["game_engine_port"]."<br>";
             </div>
         </div>
 <!-- End Password Change Modal -->
-        <script src="../../js/shipTable.js"></script>
-        <script src="../../js/battleTable.js"></script>
+        <script src="js/shipTable.js"></script>
+        <script src="js/battleTable.js"></script>
     </div>
-    <script src="../../controllers/gameCtrl.js"></script>    
+    <script src="controllers/gameCtrl.js"></script>    
 </body>
 </html>
