@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 require_once "connect.php";
 
 function save_to_file($file, $data) {
@@ -49,7 +47,7 @@ function auth() {
             save_to_flash([
                 "message" => "You must LogIn first."
             ]);
-            redirect('./login');
+            redirect('/battleships/login');
         }
     }
 }
