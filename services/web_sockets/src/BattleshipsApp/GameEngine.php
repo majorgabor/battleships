@@ -5,43 +5,54 @@ use Ratchet\ConnectionInterface;
 
 class GameEngine implements MessageComponentInterface {
     protected $clients;
+    protected $clientIds;
 
     public function __construct() {
         $this->clients = new \SplObjectStorage;
+        $this->clientIds = array();
     }
 
     public function onOpen(ConnectionInterface $conn) {
-        // Store the new connection to send messages to later
         $this->clients->attach($conn);
-
         echo "New connection! ({$conn->resourceId})\n";
     }
 
-    public function onMessage(ConnectionInterface $from, $msg) {
-        $numRecv = count($this->clients) - 1;
-        echo sprintf('Connection %d sending message "%s" to %d other connection%s' . "\n"
-            , $from->resourceId, $msg, $numRecv, $numRecv == 1 ? '' : 's');
-
-        foreach ($this->clients as $client) {
-            if ($from !== $client) {
-                // The sender is not the receiver, send to each client connected
-                $client->send($msg);
-            }
+    public function onMessage(ConnectionInterface $from, $json) {
+        $message = json_decode($json);
+        
+        switch($message->type) {
+            case "INIT":
+                $this->clientIds[$message->username] = $from->resourceId;
+                break;
+            case "BATTLEREQUEST":
+                print_r($this->clientIds);
+                $response = array(
+                    "type" => "BATTLEREQUEST",
+                    "data" => $message->data->answer
+                );
+                foreach($this->clients as $client) {
+                    if($client->resourceId == $this->clientIds[$message->enemy]) {
+                        $client->send(json_encode($response));
+                        break;
+                    }
+                }
+                break;
         }
-        $from->send("Helló client!");
-        $this->onClose($from);
     }
 
     public function onClose(ConnectionInterface $conn) {
-        // The connection is closed, remove it, as we can no longer send it messages
+        foreach($this->clientIds as $key => $value) {
+            if($conn->resourceId ==  $value) {
+                unset($this->clientIds[$key]);
+                break;
+            }
+        }
         $this->clients->detach($conn);
-
         echo "Connection {$conn->resourceId} has disconnected\n";
     }
 
     public function onError(ConnectionInterface $conn, \Exception $e) {
         echo "An error has occurred: {$e->getMessage()}\n";
-
         $conn->close();
     }
 }
