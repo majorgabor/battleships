@@ -6,7 +6,7 @@ $request_uri = rtrim($request_uri, "/");
 
 $request_uri = explode("/", $request_uri);
 
-if(isset($request_uri[3])) {
+if(isset($request_uri[4])) {
     header('HTTP/1.0 404 Not Found');
     require 'view/404/404.php';
     echo $_SERVER["REQUEST_URI"];
@@ -14,7 +14,7 @@ if(isset($request_uri[3])) {
 } else if(!isset($request_uri[1]) && $request_uri[0] == "battleships") {
     require 'view/index/index.php';
     
-} else if($request_uri[1] == "game" && isset($request_uri[2])) {
+} else if($request_uri[1] == "game" && isset($request_uri[2]) && isset($request_uri[3])) {
     $_SESSION["enemy"] = $request_uri[2];
     require 'view/game/game.php';
 

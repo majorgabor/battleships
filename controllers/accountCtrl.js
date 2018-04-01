@@ -117,7 +117,7 @@ app.controller("accountCtrl", function($scope, $http){
                 case "ENEMY":
                     console.log(answer.data);
                     setTimeout(() => {
-                        window.location = "./game/"+answer.data;
+                        window.location = "./game/"+$scope.user.username+"/"+answer.data;
                     }, 1000);
                     break;
             }

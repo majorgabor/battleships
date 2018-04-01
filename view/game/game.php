@@ -5,19 +5,18 @@ require_once "services/methods.php";
 auth();
 echo "you are ".$_SESSION["logged_in"]."<br>";
 echo "your enemy is ".$_SESSION["enemy"]."<br>";
-echo "port is ".$_SESSION["game_engine_port"]."<br>";
 ?>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="view/game/style.css">
+    <link rel="stylesheet" type="text/css" href="../../view/game/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <link href="open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+    <link href="../../open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
     <title>Game</title>
 </head>
 <body oncontextmenu="return false;">
@@ -116,7 +115,7 @@ echo "port is ".$_SESSION["game_engine_port"]."<br>";
                     </div>
                     <div class="modal-footer">
                         <div id="requesrCounter">
-                            Answer in {{requestCounter}} seconds.
+                            Answer in {{battleRequestCounter}} seconds.
                         </div>
                         <div id="requesrWaiting">
                             Waiting for the enemy.
@@ -132,9 +131,9 @@ echo "port is ".$_SESSION["game_engine_port"]."<br>";
             </div>
         </div>
 <!-- End Password Change Modal -->
-        <script src="js/shipTable.js"></script>
-        <script src="js/battleTable.js"></script>
+        <script src="../../js/shipTable.js"></script>
+        <script src="../../js/battleTable.js"></script>
     </div>
-    <script src="controllers/gameCtrl.js"></script>    
+    <script src="../../controllers/gameCtrl.js"></script>    
 </body>
 </html>
