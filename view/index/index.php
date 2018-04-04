@@ -31,7 +31,7 @@ remember();
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                        <a class="nav-link" href="./account" >
+                        <a class="nav-link" href="<?php echo './account/'.$_SESSION["logged_in"]; ?>" >
                             <span class="oi oi-person" title="account" aria-hidden="true"></span>
                         Account</a>
                     </li>
