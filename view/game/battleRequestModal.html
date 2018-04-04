@@ -1,0 +1,36 @@
+<div class="modal fade" id="acceptBattleModal">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Battle request</h4>
+            </div>
+            <div class="modal-body">
+            <div class="container">
+                <h3>Your enemy is <b>XXX</b></h3>
+                <br>
+                <div id="requestButtons">
+                    <button id="accept" type="button" class="btn btn-success">Accept</button>
+                    <button id="discard" type="button" class="btn btn-danger">Discard</button>
+                </div>
+                <!-- <div id="waitingForOpponent" class="alert alert-primary">
+                    Waiting for your other player reaction.
+                </div> -->
+            </div>
+            </div>
+            <div class="modal-footer">
+                <div id="requesrCounter">
+                    Answer in {{battleRequestCounter}} seconds.
+                </div>
+                <div id="requesrWaiting">
+                    Waiting for the enemy.
+                </div>
+                <div id="enemyDiscarded">
+                    Enemy player is discarded.
+                </div>
+                <div id="youDiscarded">
+                    You discard.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
