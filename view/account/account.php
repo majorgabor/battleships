@@ -112,7 +112,7 @@
                     <div class="jumbotron">
                         <div class="container">
                             <h3>Join to Battle</h3>
-                            <button type="button" class="btn btn-primary" ng-click="matchMaking()">Start Game</button>                    
+                            <button id="matchMaking" type="button" class="btn btn-primary">Start Game</button>                    
                         </div>
                     </div>
                 </div>
@@ -224,4 +224,5 @@
 <!-- End Password Change Modal -->
     </div>
     <script src="controllers/accountCtrl.js"></script>
+    <script src="js/matchMakeWS.js"></script>
 </body>
