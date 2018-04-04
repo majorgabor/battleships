@@ -20,6 +20,8 @@ class MatchMaking implements MessageComponentInterface {
     public function onMessage(ConnectionInterface $from, $json) {
         $message = json_decode($json);
         
+        print_r($this->usernames);
+        
         switch($message->type){
             case "NAME":
                 echo "Connection ".$from->resourceId." username is ".$message->data."\n";
@@ -27,7 +29,6 @@ class MatchMaking implements MessageComponentInterface {
                 break;
             case "MATCHMAKE":
                 echo "Try to make match.\n";
-                print_r($this->usernames);
                 if(2 <= count($this->usernames)){
                     $this->tryMatchMake();
                 } else {
@@ -35,8 +36,7 @@ class MatchMaking implements MessageComponentInterface {
                 }
                 break;
             case "ABORT":
-                echo "Connection ".$from->resourceId." ".$from->data." left the match making.\n";
-                unset($this->usernames[$from->resourceId]);
+                echo "Connection ".$from->resourceId." ".$message->data." left the match making.\n";
                 $from->close();
                 break;
         }
@@ -53,6 +53,7 @@ class MatchMaking implements MessageComponentInterface {
     }
 
     public function onClose(ConnectionInterface $conn) {
+        unset($this->usernames[$conn->resourceId]);
         $this->clients->detach($conn);
         echo "Connection {$conn->resourceId} has disconnected\n";
     }
