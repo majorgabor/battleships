@@ -112,7 +112,7 @@
                     <div class="jumbotron">
                         <div class="container">
                             <h3>Join to Battle</h3>
-                            <button type="button" class="btn btn-primary" ng-click="matchMaking()">Start Game</button>                    
+                            <button id="matchMaking" type="button" class="btn btn-primary" data-toggle="modal" data-target="#matchMakingModal" data-backdrop="static" data-keyboard="false">Start Game</button>                    
                         </div>
                     </div>
                 </div>
@@ -221,7 +221,28 @@
                 </div>
             </div>
         </div>
+        <!--  -->
+        <div class="modal fade" id="matchMakingModal">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Match Making</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                        <p id="serverInfo"></p>
+                        <button id="abortMatchMake" type="button" class="btn btn-danger" data-dismiss="modal">Abourt Match Make</button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <p>You are waiting for matchmaking.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  -->
 <!-- End Password Change Modal -->
     </div>
     <script src="../controllers/accountCtrl.js"></script>
+    <script src="../js/matchMakeWS.js"></script>
 </body>
