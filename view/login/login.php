@@ -4,7 +4,7 @@
 require_once "services/methods.php";
 remember();
 if(isset($_SESSION["logged_in"])){
-    redirect("./account");
+    redirect("./account/".$_SESSION["logged_in"]);
 }
 
 $flashData = load_from_flash();

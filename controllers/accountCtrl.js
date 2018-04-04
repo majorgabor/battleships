@@ -51,10 +51,11 @@ app.controller("accountCtrl", function($scope, $http){
                     text : response.data.message
                 };
             }
+            $scope.modify = undefined;
         }, function(response){
             console.log(response.status, response.statusText);
         });
-        $scope.modify = undefined;
+        $scope.modify.password = undefined;
     };
 
     // change password

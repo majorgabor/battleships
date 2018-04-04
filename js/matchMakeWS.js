@@ -21,7 +21,7 @@ $(document).ready(function() {
                 case "ENEMY":
                     console.log(answer.data);
                     setTimeout(() => {
-                        window.location = "./game/"+username+"/"+answer.data;
+                        window.location = "../game/"+username+"/"+answer.data;
                     }, 1000);
                     break;
             }

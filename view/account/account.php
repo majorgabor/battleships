@@ -39,7 +39,7 @@
                         Start Game</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="services/logout.php" >
+                        <a class="nav-link" href="../services/logout.php" >
                             <span class="oi oi-account-logout" title="account logout" aria-hidden="true"></span>
                         Logout</a>
                     </li>
