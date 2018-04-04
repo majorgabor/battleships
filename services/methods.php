@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 require_once "connect.php";
 
 function save_to_file($file, $data) {
@@ -45,7 +43,12 @@ function defence($str){
 
 function auth() {
     if (!isset($_SESSION["logged_in"])) {
-        remember();
+        if(!remember()){
+            save_to_flash([
+                "message" => "You must LogIn first."
+            ]);
+            redirect('/battleships/login');
+        }
     }
 }
 
@@ -54,15 +57,10 @@ function remember(){
         $cookie = unserialize($_COOKIE["remember"]);
         if(password_verify(get_code_for_remember($cookie["username"]), $cookie["code"])){
             $_SESSION["logged_in"] = $cookie["username"];
-        } else {
-            print_r($cookie);
-            echo get_code_for_remember($cookie["username"]);
-            save_to_flash([
-                "message" => "You must LogIn first."
-            ]);
-            redirect('./login');
+            return true;
         }
     }
+    return false;
 }
 
 
