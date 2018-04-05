@@ -68,7 +68,7 @@ app.controller("gameCtrl", function($scope, $http, $timeout){
     webSock.onclose = function() {
         console.log("Connection lost.");
         setTimeout(() => {
-            window.location = "../../account";
+            window.location = "../../account/"+username;
         }, 1000);
     }
     
