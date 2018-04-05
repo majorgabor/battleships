@@ -93,44 +93,11 @@ echo "your enemy is ".$_SESSION["enemy"]."<br>";
             </div>
         </div>
 <!-- End Game Row -->
-<!-- Change Password Change Modal -->
-<div class="modal fade" id="acceptBattleModal">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Battle request</h4>
-                    </div>
-                    <div class="modal-body">
-                    <div class="container">
-                        <h3>Your enemy is <b><?php echo $_SESSION["enemy"]; ?></b></h3>
-                        <br>
-                        <div id="requestButtons">
-                            <button id="accept" type="button" class="btn btn-success">Accept</button>
-                            <button id="discard" type="button" class="btn btn-danger">Discard</button>
-                        </div>
-                        <!-- <div id="waitingForOpponent" class="alert alert-primary">
-                            Waiting for your other player reaction.
-                        </div> -->
-                    </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div id="requesrCounter">
-                            Answer in {{battleRequestCounter}} seconds.
-                        </div>
-                        <div id="requesrWaiting">
-                            Waiting for the enemy.
-                        </div>
-                        <div id="enemyDiscarded">
-                            Enemy player is discarded.
-                        </div>
-                        <div id="youDiscarded">
-                            You discard.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-<!-- End Password Change Modal -->
+<!-- The Battle Request Modal -->
+        <?php
+            require "view/game/battleRequestModal.html";
+        ?>
+<!-- End Battle Request Modal -->
         <script src="../../js/shipTable.js"></script>
         <script src="../../js/battleTable.js"></script>
     </div>

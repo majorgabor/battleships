@@ -1,8 +1,6 @@
 <?php
-session_start();
 
 $request_uri = ltrim($_SERVER['REQUEST_URI'], "/");
-// $request_uri = rtrim($request_uri, "/");
 
 $request_uri = explode("/", $request_uri);
 

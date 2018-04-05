@@ -23,7 +23,7 @@ app.controller("loginCtrl", function($scope, $http) {
                     text : response.data.message
                 };
                 setTimeout(function() {
-                    window.location="./account/" + $scope.user.usename;
+                    window.location= "./account/" + $scope.user.username;
                 }, 1000);
             } else {
                 if(response.data.errors != undefined){
