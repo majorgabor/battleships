@@ -5,19 +5,18 @@ require_once "services/methods.php";
 auth();
 echo "you are ".$_SESSION["logged_in"]."<br>";
 echo "your enemy is ".$_SESSION["enemy"]."<br>";
-echo "port is ".$_SESSION["game_engine_port"]."<br>";
 ?>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="view/game/style.css">
+    <link rel="stylesheet" type="text/css" href="../../view/game/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <link href="open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+    <link href="../../open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
     <title>Game</title>
 </head>
 <body oncontextmenu="return false;">
@@ -94,47 +93,14 @@ echo "port is ".$_SESSION["game_engine_port"]."<br>";
             </div>
         </div>
 <!-- End Game Row -->
-<!-- Change Password Change Modal -->
-<div class="modal fade" id="acceptBattleModal">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Battle request</h4>
-                    </div>
-                    <div class="modal-body">
-                    <div class="container">
-                        <h3>Your enemy is <b><?php echo $_SESSION["enemy"]; ?></b></h3>
-                        <br>
-                        <div id="requestButtons">
-                            <button id="accept" type="button" class="btn btn-success">Accept</button>
-                            <button id="discard" type="button" class="btn btn-danger">Discard</button>
-                        </div>
-                        <!-- <div id="waitingForOpponent" class="alert alert-primary">
-                            Waiting for your other player reaction.
-                        </div> -->
-                    </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div id="requesrCounter">
-                            Answer in {{requestCounter}} seconds.
-                        </div>
-                        <div id="requesrWaiting">
-                            Waiting for the enemy.
-                        </div>
-                        <div id="enemyDiscarded">
-                            Enemy player is discarded.
-                        </div>
-                        <div id="youDiscarded">
-                            You discard.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-<!-- End Password Change Modal -->
-        <script src="js/shipTable.js"></script>
-        <script src="js/battleTable.js"></script>
+<!-- The Battle Request Modal -->
+        <?php
+            require "view/game/battleRequestModal.html";
+        ?>
+<!-- End Battle Request Modal -->
+        <script src="../../js/shipTable.js"></script>
+        <script src="../../js/battleTable.js"></script>
     </div>
-    <script src="controllers/gameCtrl.js"></script>    
+    <script src="../../controllers/gameCtrl.js"></script>    
 </body>
 </html>

@@ -49,7 +49,7 @@ function auth() {
             save_to_flash([
                 "message" => "You must LogIn first."
             ]);
-            redirect('./login');
+            redirect('/battleships/login');
         }
     }
 }
