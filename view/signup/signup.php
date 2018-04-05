@@ -89,7 +89,7 @@ if(isset($_SESSION["logged_in"])){
                         <div class="form-group row">
                             <div class="offset-sm-3 col-sm-9">
                                 <div class="checkbox">
-                                    <label><input type="checkbox" ng-model="user.agree" id="agree" name="agree" value="true"> I accept <a href="#" data-toggle="modal" data-target="#myModal">terms & conditions</a>.</label>
+                                    <label><input type="checkbox" ng-model="user.agree" id="agree" name="agree" value="true"> I accept <a href="#" data-toggle="modal" data-target="#userTermsModal">terms & conditions</a>.</label>
                                 </div>
                             </div>
                             <label id="error" class="control-label col-sm-9 offset-sm-3 {{errors.hide}}" for="agree">{{errors.agree}}</label>
@@ -106,22 +106,9 @@ if(isset($_SESSION["logged_in"])){
         </div>
 <!-- End Form -->
 <!-- The Modal -->
-        <div class="modal fade" id="myModal">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Terms and Conditions</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit accusantium exercitationem culpa maxime, repudiandae nisi quia nostrum mollitia deserunt quae similique enim aspernatur ea qui provident modi dolorem! Laborum, iste.
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php
+            require "view/signup/userTermsModal.html";
+        ?>
 <!-- End Modal -->
     </div>
     <script src="controllers/signupCtrl.js"></script>

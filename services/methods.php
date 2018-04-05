@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once "connect.php";
 
 function save_to_file($file, $data) {
@@ -42,6 +44,9 @@ function defence($str){
 }
 
 function auth() {
+    $request_uri = ltrim($_SERVER['REQUEST_URI'], "/");
+    $request_uri = explode("/", $request_uri);
+    
     if (!isset($_SESSION["logged_in"])) {
         if(!remember()){
             save_to_flash([
@@ -49,6 +54,12 @@ function auth() {
             ]);
             redirect('/battleships/login');
         }
+    } else if($request_uri[2] != $_SESSION["logged_in"]) {
+        unset($_SESSION["logged_in"]);
+        save_to_flash([
+            "message" => "You must LogIn first."
+        ]);
+        redirect('/battleships/login');
     }
 }
 

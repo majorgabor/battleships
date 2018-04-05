@@ -9,7 +9,7 @@ app.controller("accountCtrl", function($scope, $http){
         $scope.loading = true;
         $http({
             method: "POST",
-            url: "services/accountinfo.php"
+            url: "../services/accountinfo.php"
         }).then(function(response){
             $scope.user = response.data;
         }, function(response){
@@ -30,7 +30,7 @@ app.controller("accountCtrl", function($scope, $http){
     $scope.submitModify = function(){
         $http({
             method : "POST",
-            url    : "services/modify.php",
+            url    : "../services/modify.php",
             data   : $scope.modify
         }).then(function(response){
             $scope.modify_errors.hide = "d-none";
@@ -51,10 +51,11 @@ app.controller("accountCtrl", function($scope, $http){
                     text : response.data.message
                 };
             }
+            $scope.modify = undefined;
         }, function(response){
             console.log(response.status, response.statusText);
         });
-        $scope.modify = undefined;
+        $scope.modify.password = undefined;
     };
 
     // change password
@@ -68,7 +69,7 @@ app.controller("accountCtrl", function($scope, $http){
     $scope.submitPasswordChange = function(){
         $http({
             method : "POST",
-            url    : "services/changepwd.php",
+            url    : "../services/changepwd.php",
             data   : $scope.change_password
         }).then(function(response){
             $scope.changePassword_errors.hide = "d-none";
@@ -96,54 +97,4 @@ app.controller("accountCtrl", function($scope, $http){
     };
 
     //match makeing
-
-    $scope.matchMaking = function(){
-        const webSock = new WebSocket("ws://localhost:6060");
-        var maker;
-    
-        webSock.onopen = function(){
-            sendMassage("NAME", $scope.user.username);
-            maker = setInterval(() => {
-                sendMassage("MATCHMAKE", null);                
-            }, 5000);
-        };
-    
-        webSock.onmessage = function(event){
-            answer =  JSON.parse(event.data);
-            switch(answer.type) {
-                case "INFO":
-                    console.log(answer.data);
-                    break;
-                case "ENEMY":
-                    console.log(answer.data);
-                    setTimeout(() => {
-                        window.location = "./game/"+$scope.user.username+"/"+answer.data;
-                    }, 1000);
-                    break;
-            }
-        };
-    
-        webSock.onclose = function(){
-            console.log("connection closed.");
-            clearInterval(maker);
-            $scope.websock = "";
-        };
-    
-        webSock.onerror = function(){
-            $scope.websock = "Server error.";
-            webSock.close();
-        };
-
-        $scope.abortMatchMaking = function() {
-            sendMassage("ABORT", $scope.user.username);
-        };
-
-        function sendMassage(type, data) {
-            const message = {
-                type: type,
-                data: data,
-            };
-            webSock.send(JSON.stringify(message));
-        }
-    }
 });
