@@ -3,8 +3,6 @@
 
 require_once "services/methods.php";
 auth();
-echo "you are ".$_SESSION["logged_in"]."<br>";
-echo "your enemy is ".$_SESSION["enemy"]."<br>";
 ?>
 <html lang="en">
 <head>
@@ -51,7 +49,7 @@ echo "your enemy is ".$_SESSION["enemy"]."<br>";
                     <h3>Your enemy is <b><?php echo $_SESSION["enemy"]; ?></b></h3>
                     <br>
                     <div class="container">
-                        <button type="button" class="btn btn-primary">Exit Game</button>
+                        <button type="button" class="exitGame btn btn-primary">Exit Game</button>
                     </div>
                 </div>
             </div>
@@ -65,7 +63,7 @@ echo "your enemy is ".$_SESSION["enemy"]."<br>";
                     <br>
                     <div id="myShips" ng-modell="setShip"></div>
                     <br>
-                    <div id="shipPlaceButtons" class="container">
+                    <div id="placeShipsButtons" class="container">
                         <div class="btn-group">
                             <button id="reset" type="button" class="btn btn-primary">Reset Table</button>
                             <button id="ready" type="button" class="btn btn-primary">Ready</button>
@@ -73,8 +71,8 @@ echo "your enemy is ".$_SESSION["enemy"]."<br>";
                         </div> 
                     </div>
                 </div>
-                <div class="alert alert-primary">
-                    You have to step in {{placeShipCounter}} secons!
+                <div id="placeShipsAlert" class="alert alert-primary">
+                    You have to step in <span id="placeShipsCounter"></span> secons!
                 </div>
             </div>
             <div class="col-xl-6 col-lg-12">
@@ -98,6 +96,11 @@ echo "your enemy is ".$_SESSION["enemy"]."<br>";
             require "view/game/battleRequestModal.html";
         ?>
 <!-- End Battle Request Modal -->
+<!-- the Gameing Modal -->
+    <?php
+        require "view/game/gamingModal.html";
+    ?>
+<!-- End Gameing Modal -->
         <script src="../../js/shipTable.js"></script>
         <script src="../../js/battleTable.js"></script>
     </div>
