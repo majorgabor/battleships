@@ -24,17 +24,21 @@ class GameEngine implements MessageComponentInterface {
             case "INIT":
                 $this->clientIds[$message->username] = $from->resourceId;
                 break;
+
             case "BATTLEREQUEST":
                 print_r($this->clientIds);
                 $response = array(
                     "type" => "BATTLEREQUEST",
-                    "data" => $message->data->answer
+                    "data" => $message->data
                 );
                 foreach($this->clients as $client) {
                     if($client->resourceId == $this->clientIds[$message->enemy]) {
                         $client->send(json_encode($response));
                         break;
                     }
+                }
+                if($message->data == "DISCARD") {
+                    $from->close();
                 }
                 break;
         }

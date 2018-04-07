@@ -15,7 +15,7 @@ echo "your enemy is ".$_SESSION["enemy"]."<br>";
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script> -->
     <link href="../../open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
     <title>Game</title>
 </head>
@@ -101,6 +101,6 @@ echo "your enemy is ".$_SESSION["enemy"]."<br>";
         <script src="../../js/shipTable.js"></script>
         <script src="../../js/battleTable.js"></script>
     </div>
-    <script src="../../controllers/gameCtrl.js"></script>    
+    <script src="../../js/gameEngineWS.js"></script>    
 </body>
 </html>
