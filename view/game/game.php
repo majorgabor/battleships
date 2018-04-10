@@ -18,7 +18,7 @@ auth();
     <title>Game</title>
 </head>
 <body oncontextmenu="return false;">
-    <div ng-app="myApp" ng-controller="gameCtrl">
+    <div>
         <nav class="navbar navbar-expand-md bg-dark navbar-dark">
             <div class="navbar-brand">Battleships game</div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -61,7 +61,7 @@ auth();
                 <div class="jumbotron">
                     <h3>Your Ships</h3>
                     <br>
-                    <div id="myShips" ng-modell="setShip"></div>
+                    <div id="myShips"></div>
                     <br>
                     <div id="placeShipsButtons" class="container">
                         <div class="btn-group">
@@ -81,12 +81,12 @@ auth();
                     <br>
                     <div id="myBattlefield"></div>
                     <br>
-                    <div class="container">
-                        <button type="button" class="btn btn-primary">Fire Missle</button>
+                    <div id="fireMissleButtons" class="container">
+                        <button id="fireMissile" type="button" class="btn btn-primary">Fire Missile</button>
                     </div>
                 </div>
-                <div class="alert alert-primary">
-                    You have to step in XX secons!
+                <div id="fireMissileAlert" class="alert alert-primary">
+                    You have to step in <span id="fireMissileCounter"></span> secons!
                 </div>
             </div>
         </div>
@@ -101,8 +101,8 @@ auth();
         require "view/game/gamingModal.html";
     ?>
 <!-- End Gameing Modal -->
-        <script src="../../js/shipTable.js"></script>
-        <script src="../../js/battleTable.js"></script>
+        <!-- <script src="../../js/shipTable.js"></script>
+        <script src="../../js/battleTable.js"></script> -->
     </div>
     <script src="../../js/gameEngineWS.js"></script>    
 </body>

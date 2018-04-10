@@ -74,7 +74,57 @@ class GameEngine implements MessageComponentInterface {
                 break;
             
             case "PLACEDSHIPS":
-                $this->ships[$message->username] = $message->data;
+                $this->ships[$message->username] = $message->data;              
+                if(isset($this->ships[$message->enemy])) {
+                    if(rand(0, 9) < 5) {
+                        $toUsername = array(
+                            "type" => "YOU_TURN",
+                            "data" => NULL
+                        );
+                        $toEnemy = array(
+                            "type" => "YOU_WAIT",
+                            "data" => NULL
+                        );
+                    } else {
+                        $toUsername = array(
+                            "type" => "YOU_WAIT",
+                            "data" => NULL
+                        );
+                        $toEnemy = array(
+                            "type" => "YOU_TURN",
+                            "data" => NULL
+                        );
+                    }
+                    foreach($this->clients as $client) {
+                        if($client->resourceId == $this->clientIds[$message->enemy]) {
+                            $client->send(json_encode($toEnemy));
+                            break;
+                        }
+                    }
+                    $from->send(json_encode($toUsername));                    
+                }
+                break;
+            
+            case "MISSILE_FIRED":
+                $result = "MISSED";
+                if(isset($this->ships[$message->enemy][$message->data->x][$message->data->y])) {
+                    $result = "HIT";
+                }
+                $toEnemy = array(
+                    "type" => "YOU_TURN",
+                    "data" => array("result" => $result, "x" => $message->data->x, "y" => $message->data->y)
+                );
+                foreach($this->clients as $client) {
+                    if($client->resourceId == $this->clientIds[$message->enemy]) {
+                        $client->send(json_encode($toEnemy));
+                        break;
+                    }
+                }
+                $toUsername = array(
+                    "type" => "YOU_WAIT",
+                    "data" => array("result" => $result, "x" => $message->data->x, "y" => $message->data->y)                   
+                );
+                $from->send(json_encode($toUsername));                    
                 break;
         }
     }
