@@ -3,8 +3,6 @@
 
 require_once "services/methods.php";
 auth();
-echo "you are ".$_SESSION["logged_in"]."<br>";
-echo "your enemy is ".$_SESSION["enemy"]."<br>";
 ?>
 <html lang="en">
 <head>
@@ -15,12 +13,12 @@ echo "your enemy is ".$_SESSION["enemy"]."<br>";
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script> -->
     <link href="../../open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
     <title>Game</title>
 </head>
 <body oncontextmenu="return false;">
-    <div ng-app="myApp" ng-controller="gameCtrl">
+    <div>
         <nav class="navbar navbar-expand-md bg-dark navbar-dark">
             <div class="navbar-brand">Battleships game</div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -51,7 +49,7 @@ echo "your enemy is ".$_SESSION["enemy"]."<br>";
                     <h3>Your enemy is <b><?php echo $_SESSION["enemy"]; ?></b></h3>
                     <br>
                     <div class="container">
-                        <button type="button" class="btn btn-primary">Exit Game</button>
+                        <button type="button" class="exitGame btn btn-primary">Exit Game</button>
                     </div>
                 </div>
             </div>
@@ -63,9 +61,9 @@ echo "your enemy is ".$_SESSION["enemy"]."<br>";
                 <div class="jumbotron">
                     <h3>Your Ships</h3>
                     <br>
-                    <div id="myShips" ng-modell="setShip"></div>
+                    <div id="myShips"></div>
                     <br>
-                    <div id="shipPlaceButtons" class="container">
+                    <div id="placeShipsButtons" class="container">
                         <div class="btn-group">
                             <button id="reset" type="button" class="btn btn-primary">Reset Table</button>
                             <button id="ready" type="button" class="btn btn-primary">Ready</button>
@@ -73,8 +71,8 @@ echo "your enemy is ".$_SESSION["enemy"]."<br>";
                         </div> 
                     </div>
                 </div>
-                <div class="alert alert-primary">
-                    You have to step in {{placeShipCounter}} secons!
+                <div id="placeShipsAlert" class="alert alert-primary">
+                    You have to step in <span id="placeShipsCounter"></span> secons!
                 </div>
             </div>
             <div class="col-xl-6 col-lg-12">
@@ -83,12 +81,12 @@ echo "your enemy is ".$_SESSION["enemy"]."<br>";
                     <br>
                     <div id="myBattlefield"></div>
                     <br>
-                    <div class="container">
-                        <button type="button" class="btn btn-primary">Fire Missle</button>
+                    <div id="fireMissleButtons" class="container">
+                        <button id="fireMissile" type="button" class="btn btn-primary">Fire Missile</button>
                     </div>
                 </div>
-                <div class="alert alert-primary">
-                    You have to step in XX secons!
+                <div id="fireMissileAlert" class="alert alert-primary">
+                    You have to step in <span id="fireMissileCounter"></span> secons!
                 </div>
             </div>
         </div>
@@ -98,9 +96,14 @@ echo "your enemy is ".$_SESSION["enemy"]."<br>";
             require "view/game/battleRequestModal.html";
         ?>
 <!-- End Battle Request Modal -->
-        <script src="../../js/shipTable.js"></script>
-        <script src="../../js/battleTable.js"></script>
+<!-- the Gameing Modal -->
+    <?php
+        require "view/game/gamingModal.html";
+    ?>
+<!-- End Gameing Modal -->
+        <!-- <script src="../../js/shipTable.js"></script>
+        <script src="../../js/battleTable.js"></script> -->
     </div>
-    <script src="../../controllers/gameCtrl.js"></script>    
+    <script src="../../js/gameEngineWS.js"></script>    
 </body>
 </html>

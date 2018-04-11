@@ -5,21 +5,18 @@
                 <h4 class="modal-title">Battle request</h4>
             </div>
             <div class="modal-body">
-            <div class="container">
-                <h3>Your enemy is <b>XXX</b></h3>
-                <br>
-                <div id="requestButtons">
-                    <button id="accept" type="button" class="btn btn-success">Accept</button>
-                    <button id="discard" type="button" class="btn btn-danger">Discard</button>
+                <div class="container">
+                    <h3>Your enemy is <b>XXX</b></h3>
+                    <br>
+                    <div id="requestButtons">
+                        <button id="accept" type="button" class="btn btn-success">Accept</button>
+                        <button id="discard" type="button" class="btn btn-danger">Discard</button>
+                    </div>
                 </div>
-                <!-- <div id="waitingForOpponent" class="alert alert-primary">
-                    Waiting for your other player reaction.
-                </div> -->
-            </div>
             </div>
             <div class="modal-footer">
                 <div id="requesrCounter">
-                    Answer in {{battleRequestCounter}} seconds.
+                    Answer in <span id="battleRequestCounter"></span> seconds.
                 </div>
                 <div id="requesrWaiting">
                     Waiting for the enemy.
