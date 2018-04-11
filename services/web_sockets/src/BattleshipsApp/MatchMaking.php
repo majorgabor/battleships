@@ -30,6 +30,10 @@ class MatchMaking implements MessageComponentInterface {
             case "MATCHMAKE":
                 echo "Try to make match.\n";
                 if(2 <= count($this->usernames)){
+                    $this->sendToAll(
+                        "INFO",
+                        "Match making in progress."
+                    );
                     $this->tryMatchMake();
                 } else {
                     echo "Can't make match.\n";
@@ -40,16 +44,10 @@ class MatchMaking implements MessageComponentInterface {
                 $from->close();
                 break;
         }
-
-        $info = array(
-            "type" => "INFO",
-            "data" => "Waiting for match making. There are ".(count($this->clients)-1)." other players waiting.",
+        $this->sendToAll(
+            "INFO",
+            "Waiting for match making. There are ".(count($this->clients)-1)." other players waiting."
         );
-        $response = json_encode($info);
-        foreach ($this->clients as $client) {
-            $client->send($response);
-        }
-        
     }
 
     public function onClose(ConnectionInterface $conn) {
@@ -61,6 +59,17 @@ class MatchMaking implements MessageComponentInterface {
     public function onError(ConnectionInterface $conn, \Exception $e) {
         echo "An error has occurred: {$e->getMessage()}\n";
         $conn->close();
+    }
+
+    protected function sendToAll($type, $data) {
+        $message = array(
+            "type" => $type,
+            "data" => $data
+        );
+        $json = json_encode($message);
+        foreach ($this->clients as $client) {
+            $client->send($json);
+        }
     }
 
     protected function tryMatchMake() {

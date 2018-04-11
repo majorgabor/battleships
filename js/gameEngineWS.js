@@ -65,7 +65,7 @@ $(document).ready(function(){
         for(i = 0; i < 10; i++){
             for(j = 0; j < 10; j++){
                 shipArray[i][j] = undefined;
-                $("#myShips").find("td[data-x="+ i +"][data-y="+ j +"]").css("background","inherit");   
+                $("#myShips").find("td[data-x="+ i +"][data-y="+ j +"]").css("background","");   
             }
         }
     });
@@ -102,12 +102,13 @@ $(document).ready(function(){
     });
 
     // to fire missile
-    var firedMissile;
+    var firedMissile = {x: 0, y :0};
     $("#myBattlefield").find("td").on("click", function(){
         firedMissile = {
             x: parseInt(this.dataset.x),
             y: parseInt(this.dataset.y),
         };
+        $(this).css("background","#28a745");
         $("#fireMissleButtons").show();
     });
     $("#fireMissile").on("click", function(){
@@ -118,7 +119,8 @@ $(document).ready(function(){
     });
 
     $(".exitGame").on("click", function() {
-        sendMessage("GAME_END", "EXIT");
+        sendMessage("EXIT_END", "EXIT");
+        $(this).prop("disabled", true);
     });
 });
 
@@ -151,7 +153,7 @@ const shipSize = [null, 1, 1, 2, 2, 3, 4, 5];
 var placeinfShipId = 7;
 
 //game engine web socket
-const webSock = new WebSocket("ws://localhost:7070");
+const webSock = new WebSocket("ws://192.168.0.8:7070");
 
 webSock.onopen = function() {
     sendMessage("INIT", null);
@@ -175,7 +177,7 @@ webSock.onmessage = function(event) {
                 webSock.close();
             } else if(message.data === "ACCEPT") {
                 $("#acceptBattleModal").modal("hide");
-                mainCounter(20, "placeShipsCounter");
+                mainCounter(25, "placeShipsCounter");
             }
             break;
 
@@ -187,18 +189,21 @@ webSock.onmessage = function(event) {
                             "<p>The enemy missile is <b>missed</b> on x: "+message.data.x+" y: "+message.data.y+".</p>"+
                             "<p>Ti's your turn.</p>"
                         );
+                        $("#myShips").find("td[data-x="+ message.data.x +"][data-y="+ message.data.y +"]").css("background","#0088ff");
                         break;
                     case "HIT":
                         $("#gamingModalText").html(
                             "<p>The enemy missile is <b>hit</b> the your ship on x: "+message.data.x+" y: "+message.data.y+".</p>"+
                             "<p>Ti's your turn.</p>"
                         );
+                        $("#myShips").find("td[data-x="+ message.data.x +"][data-y="+ message.data.y +"]").css("background","#dc3545");
                         break;
                     case "SANK":
                         $("#gamingModalText").html(
                             "<p>The enemy missile is <b>hit</b> and your ship <b>sank</b> on x: "+message.data.x+" y: "+message.data.y+".</p>"+
                             "<p>Ti's your turn.</p>"
                         );
+                        $("#myShips").find("td[data-x="+ message.data.x +"][data-y="+ message.data.y +"]").css("background","#dc3545");
                         break;
                     }        
             } else {
@@ -207,7 +212,7 @@ webSock.onmessage = function(event) {
             setTimeout(function(){
                 $("#gamingModal").modal("hide");
             }, 2000);
-            // mainCounter(17, "fireMissileCounter");
+            mainCounter(27, "fireMissileCounter");
             $("#fireMissileAlert").show();
             $("#fireMissleButtons").show();
             break;
@@ -220,23 +225,34 @@ webSock.onmessage = function(event) {
                             "<p>Your missile is <b>missed</b> on x: "+message.data.x+" y: "+message.data.y+".</p>"+
                             "<p>Your enemy turn.</p>"
                         );
+                        $("#myBattlefield").find("td[data-x="+ message.data.x +"][data-y="+ message.data.y +"]").css("background","#0088ff");
                         break;
                     case "HIT":
                         $("#gamingModalText").html(
                             "<p>Your missile is <b>hit</b> the enemy ship on x: "+message.data.x+" y: "+message.data.y+".</p>"+
                             "<p>Your enemy turn.</p>"
                         );
+                        $("#myBattlefield").find("td[data-x="+ message.data.x +"][data-y="+ message.data.y +"]").css("background","#dc3545");
                         break;
                     case "SANK":
                         $("#gamingModalText").html(
                             "<p>Your missile is <b>hit</b> and the enemy ship <b>sank</b> on x: "+message.data.x+" y: "+message.data.y+".</p>"+
                             "<p>Your enemy turn.</p>"
                         );
+                        $("#myBattlefield").find("td[data-x="+ message.data.x +"][data-y="+ message.data.y +"]").css("background","#dc3545");
                         break;
                     }
             } else {
                 $("#gamingModalText").html("<p>Your enemy turn.</p>");
             }
+            $("#gamingModal").modal({
+                backdrop: "static",
+                keyboard: false
+            });
+            break;
+        
+        case "GAME_END":
+            $("#gamingModalText").html("<p>"+message.data+"</p>");
             $("#gamingModal").modal({
                 backdrop: "static",
                 keyboard: false
@@ -280,7 +296,7 @@ function mainCounter(totalTime, whereToPrint) {
         $("#"+whereToPrint).text(timeLeft);
         if(timeLeft === 0) {
             clearInterval(counter);
-            sendMessage("GAME_END", "TIME_OUT");        
+            sendMessage("EXIT_END", "TIME_OUT");        
         }
     }, 1000);
 }

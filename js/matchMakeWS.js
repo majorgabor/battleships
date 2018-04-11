@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $("#matchMaking").on("click", function(){
-        const webSock = new WebSocket("ws://localhost:6060");
+        const webSock = new WebSocket("ws://192.168.0.8:6060");
         var maker;
         
         const username = window.location.pathname.split("/").slice(-2)[1];
