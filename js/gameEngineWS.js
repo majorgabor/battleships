@@ -363,38 +363,3 @@ function markShip(x, y, orientation, length, type){
         }
     }
 }
-
-// $scope.battleRequest = function(answer) {
-//     sendMessage("BATTLEREQUEST", {
-//         answer: answer,
-//     });
-//     if(answer === "DISCARD") {
-//         webSock.close();
-//     }
-// }
-
-// $scope.battleRequestTimeout = function(){
-//     $scope.battleRequestCounter--;
-//     if($scope.battleRequestCounter > 0){
-//         mytimeout = $timeout($scope.battleRequestTimeout,1000);
-//     } else {
-//         $scope.battleRequest("DISCARD");
-//     }
-// }
-// var mytimeout = $timeout($scope.battleRequestTimeout,1000);
-
-
-    
-
-    // $scope.placeShipCounter = 20;
-    // $scope.placeShipTimeout = function(){
-    //     $scope.placeShipCounter--;
-    //     if($scope.placeShipCounter > 0){
-    //         mytimeout = $timeout($scope.placeShipTimeout,1000);
-    //     } else {
-    //         $scope.sendPlaceShipTimeout();
-    //     }
-    // } 
-
-    
-
